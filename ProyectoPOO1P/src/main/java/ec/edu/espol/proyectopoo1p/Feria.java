@@ -14,7 +14,7 @@ import java.util.Random;
  * @author GENERATION 10
  */
 public class Feria {
-    
+    private static int numCodigo=0;
     private int codigo;
     private String descripcion;
     private String nombre;
@@ -39,14 +39,21 @@ public class Feria {
         this.fechaFin = fechaFin;
         this.horario = horario;
         this.lugar = lugar;
-        
-        int codigoAleatorio;
+        //Inicializo ArrayList
+        listaAuspiciantes=new ArrayList<>();
+        listaEmprendedores=new ArrayList<>();
+        stands=new ArrayList<>();
+        codigosFerias=new ArrayList<>();
+        standsPorSector=new ArrayList<>();
+        /*int codigoAleatorio;
         do{
             codigoAleatorio = generarCodigoAleatorio();
         } while(codigosFerias.contains(codigoAleatorio));
         
         codigosFerias.add(codigoAleatorio);
-        codigo = codigoAleatorio;
+        codigo = codigoAleatorio; */
+        codigo=numCodigo;
+        numCodigo++; //El codigo debe incrementar en uno cada vez que se itera
     }
 
      private static int generarCodigoAleatorio() {
@@ -187,10 +194,12 @@ public class Feria {
     @Override
    public String toString(){
        return "Nombre: " + nombre + "\nDescripción: " + descripcion + "\nLugar: " + lugar + "\nFecha Inicio: " + fechaInicio
-               + "\nFecha Fin: " + fechaFin + "\nHorario: " + horario + "Lista de Auspiciantes: " + listaAuspiciantes + "Cantidad Stands por sección: "
+               + "\nFecha Fin: " + fechaFin + "\nHorario: " + horario + "\nLista de Auspiciantes: " + listaAuspiciantes + "\nCantidad Stands por sección: \n"
                + calcularStands();
    }
-    
+    public String mostrarInfo(){
+        return "Codigo:" + codigo+ "\nNombre: " + nombre +"\nFecha Inicio: " + fechaInicio+  "\nLugar: " + lugar+ "\nCantidad de Auspiciantes: "+ listaAuspiciantes.size();   
+    }
     
     
 }

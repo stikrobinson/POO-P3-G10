@@ -39,6 +39,10 @@ public class ProyectoPOO1P {
             case 1:
                 
                 do{
+                System.out.println("\nListado de ferias:");
+                for (Feria f:ferias){
+                    System.out.println(f.mostrarInfo());
+                }
                 System.out.println("1. Ver información de feria");
                 System.out.println("2. Registrar feria");
                 System.out.println("3. Editar feria");
@@ -46,6 +50,7 @@ public class ProyectoPOO1P {
                 System.out.println("5. Regresar");
                 
                 num = sc.nextInt();
+                sc.nextLine();
                 switch (num) {
                     case 1: 
                         System.out.println("\nIngrese el código de la feria: ");
@@ -62,7 +67,7 @@ public class ProyectoPOO1P {
                         String nombre = sc.nextLine();
                         System.out.println("Descripción: ");
                         String descripcion = sc.nextLine();
-                        System.out.println("Lugar: ;");
+                        System.out.println("Lugar: ");
                         String lugar = sc.nextLine();
                         System.out.println("Fecha de inicio (YYYY-MM-DD): ");
                         String fechaIniciotxt = sc.nextLine();
@@ -80,6 +85,7 @@ public class ProyectoPOO1P {
                     case 3:
                         System.out.println("Ingrese el código de la feria que desea editar: ");
                         int codigoDeFeriaAEditar = sc.nextInt();
+                        sc.nextLine();
                         for(Feria f:ferias){
                             if(codigoDeFeriaAEditar == f.getCodigo()){
                                 if(f.getFechaInicio().isBefore(LocalDate.now())){
@@ -100,7 +106,7 @@ public class ProyectoPOO1P {
                                     System.out.print("Nueva fecha de inicio (YYYY-MM-DD): ");
                                     String inputFechaInicio = sc.nextLine();
                                     LocalDate fechaInicio1 = LocalDate.parse(inputFechaInicio);
-                                    f.setFechaFin(fechaInicio1);
+                                    f.setFechaInicio(fechaInicio1);
                                     
                                     System.out.print("Nueva fecha de fin (YYYY-MM-DD): ");
                                     String inputFechaFin = sc.nextLine();
@@ -121,6 +127,7 @@ public class ProyectoPOO1P {
                     case 4:
                         System.out.println("Ingrese el código de la feria: ");
                         int codigoIngresado = sc.nextInt();
+                        sc.nextLine();
                         for(Feria f: ferias){
                             if(f.getCodigo() == codigoIngresado){
                                 for(Emprendedor e: f.getListaEmprendedores()){
@@ -136,7 +143,7 @@ public class ProyectoPOO1P {
                         break;
                 }
             }while(num!=5);
-            
+            num=-1;// numero se cambia para que no salga del otro do while 
         }
      }while(num!=5);  
     }
