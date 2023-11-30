@@ -13,6 +13,9 @@ import java.util.ArrayList;
 public class Auspiciante extends Participante {
     private SectorCubierto sector;
     private ArrayList<Auspiciante> auspiciantes;
-    
+
+    public Auspiciante(String c, String t, String e, String d, String s, String n){
+      super(c,t,e,d,s,n);
+    }
     
 }
