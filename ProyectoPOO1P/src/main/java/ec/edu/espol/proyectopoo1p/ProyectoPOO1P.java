@@ -144,7 +144,78 @@ public class ProyectoPOO1P {
                 }
             }while(num!=5);
             num=-1;// numero se cambia para que no salga del otro do while 
-        }
-     }while(num!=5);  
-    }
+        case 2: 
+        do{
+            System.out.println("1. Registrar emprendedor");
+            System.out.println("2. Editar emprendedor");
+            System.out.println("3. Regresar");
+            
+            num = sc.nextInt();
+            sc.nextLine();
+            switch(num){
+                case 1:
+                String cedula;
+                boolean verificador = false;
+                do{
+                System.out.println("Ingrese el número de cédula o RUC");
+                cedula = sc.nextLine();
+                for(Emprendedor emprendedor: Emprendedor.getEmprendedores()){
+                  if(emprendedor.getCedula().equals(cedula)){
+                    System.out.println("Cédula ya registrada");
+                    verificador = true;
+                  }
+                  else{
+                    verificador = false;
+                  }
+                }
+                }while(verificador==true);
+                System.out.println("Ingrese el nombre");
+                String nombre = sc.nextLine();
+                System.out.println("Ingrese el telefono");
+                String telefono = sc.nextLine();
+                System.out.println("Ingrese el email");
+                String email = sc.nextLine();
+                System.out.println("Ingrese la dirección");
+                String direccion = sc.nextLine();
+                System.out.println("Ingrese el sitio web");
+                String sitioWeb = sc.nextLine();
+                System.out.println("Ingrese el nombre de la persona responsable");
+                String responsable = sc.nextLine();
+                System.out.println("Ingrese la descripción de los servicios que ofrece");
+                String descripcion = sc.nextLine();
+                System.out.println("Nombres en cada red social que maneja");
+                Emprendedor emprender = new Emprendedor(cedula, nombre, telefono, email, direccion, sitioWeb, responsable, descripcion);
+                Emprendedor.getEmprendedores().add(emprender);
+                String respuesta;
+                do{                
+                System.out.println("Ingrese su red social: Twitter, Facebook, Instagram, YouTube, TikTok, LinkedIn y Pinterest");
+                String redSocial = sc.nextLine().toUpperCase();
+                try {
+                RedSocial r = RedSocial.valueOf(redSocial);
+                System.out.println("Ingrese el nombre de la cuenta");
+                String usuario = sc.nextLine();
+                CuentaRedSocial cuentaRed = new CuentaRedSocial(usuario,r);
+                emprender.getListaRedesSociales().add(cuentaRed);
+                } catch (IllegalArgumentException except) {
+                System.out.println("Opción no válida");
+                }
+                System.out.println("Si quiere agregar otra red social, escriba Y");
+                respuesta = sc.nextLine();
+                }while(respuesta.equals("Y"));
+                break;
+                case 2:
+                System.out.println("2");
+                break;
+                case 3:
+                break;
+                default:
+                System.out.println("Opción no válida. Inténtalo de nuevo.");
+                break;
+            }
+        }while(num!=3);
+        num = -1;
+
+    }  
+    }while(num!=5);
+}
 }
