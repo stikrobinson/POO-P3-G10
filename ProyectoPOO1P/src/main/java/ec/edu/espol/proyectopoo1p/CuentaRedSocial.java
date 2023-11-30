@@ -12,5 +12,9 @@ public class CuentaRedSocial {
     
     private String cuenta;
     private RedSocial redSocial;
-    
+
+    public CuentaRedSocial(String s, RedSocial r){
+      cuenta = s;
+      redSocial = r;
+    }
 }
