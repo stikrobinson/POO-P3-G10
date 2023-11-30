@@ -13,10 +13,16 @@ import java.util.ArrayList;
 public class Emprendedor extends Participante {
     private String nombreEmprendimiento;
     private String descripcion;
-    private ArrayList<Emprendedor> emprendedores;
+    private static ArrayList<Emprendedor> emprendedores = new ArrayList<>();
     private SectorCubierto seccion;
     private Stand standAsignado;
 
+    public Emprendedor(String c, String t, String e, String d, String s, String n, String responsable, String descripcion){
+      super(c,t,e,d,s,n);
+      nombreEmprendimiento = responsable;
+      this.descripcion = descripcion;
+    }
+  
     public SectorCubierto getSeccion() {
         return seccion;
     }
@@ -51,14 +57,18 @@ public class Emprendedor extends Participante {
         this.descripcion = descripcion;
     }
 
-    public ArrayList<Emprendedor> getEmprendedores() {
+    public static ArrayList<Emprendedor> getEmprendedores() {
         return emprendedores;
     }
 
-    public void setEmprendedores(ArrayList<Emprendedor> emprendedores) {
-        this.emprendedores = emprendedores;
+    public static void setEmprendedores(ArrayList<Emprendedor> e) {
+        emprendedores = e;
     }
-    
+    @Override
+    public ArrayList<CuentaRedSocial> getListaRedesSociales(){
+      return super.getListaRedesSociales();
+    }
+  
     @Override
     public String toString(){
         return "Nombre del emprendimiento: " + nombreEmprendimiento + "\nDescripción: " + descripcion + "\nSección" + seccion
