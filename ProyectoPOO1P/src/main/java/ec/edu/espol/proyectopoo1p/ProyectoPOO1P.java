@@ -137,6 +137,8 @@ public class ProyectoPOO1P {
                                 }
                             }
                         }break;
+                    case 5:
+                        break;
                     
                     default: 
                         System.out.println("Opción no válida. Inténtalo de nuevo.");
@@ -144,6 +146,7 @@ public class ProyectoPOO1P {
                 }
             }while(num!=5);
             num=-1;// numero se cambia para que no salga del otro do while 
+            break;
         case 2: 
         do{
             System.out.println("1. Registrar emprendedor");
