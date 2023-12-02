@@ -20,6 +20,7 @@ public class ProyectoPOO1P {
         ArrayList <Feria> ferias = new ArrayList<>();
         ArrayList <Emprendedor> emprendedores = new ArrayList<>();
         int num;
+        ArrayList <Auspiciante> auspiciantes=new ArrayList<>();
         do{
         
         System.out.println("Bienvenido a la aplicación de manejo de ferias");
@@ -217,6 +218,86 @@ public class ProyectoPOO1P {
             }
         }while(num!=3);
         num = -1;
+        case 3:
+        do{
+            System.out.println("1. Registrar auspiciante");
+            System.out.println("2. Editar auspiciante");
+            System.out.println("3. Asignar auspiciante a feria");
+            System.out.println("4. Regresar");
+
+            num = sc.nextInt();
+            sc.nextLine();
+            switch (num) {
+             case 1:
+                Boolean verificador=false;
+                String cedula;
+                do{
+                System.out.println("Ingrese numero de cedula o RUC");
+                cedula = sc.nextLine();
+                for(Emprendedor emprendedor: Emprendedor.getEmprendedores()){
+                  if(emprendedor.getCedula().equals(cedula)){
+                    System.out.println("Cédula o RUC ya registrada");
+                    verificador = true;
+                  }
+                  else{
+                    verificador = false;
+                  }
+                }
+                }while(verificador==true);
+                System.out.println("Ingrese nombre");
+                String nombre= sc.nextLine();
+                System.out.println("Ingrese nombre de persona responsable");
+                String nombre_re= sc.nextLine();
+                System.out.println("Ingrese un numero de telefono");
+                String numero=sc.nextLine();
+                System.out.println("Ingrese su email");
+                String email=sc.nextLine();
+                System.out.println("Ingrese su sitio web");
+                String sitioweb=sc.nextLine();
+                System.out.println("Ingrese la dirección");
+                String direccion = sc.nextLine();
+                System.out.println("Ingrese el sector cubierto");
+                String sector=sc.nextLine().toUpperCase();
+                SectorCubierto s=SectorCubierto.valueOf(sector);
+                Auspiciante auspiciante=new Auspiciante(cedula,numero,email,direccion,sitioweb,nombre_re,nombre,s);
+                String respuesta;
+                do{                
+                System.out.println("Ingrese su red social: Twitter, Facebook, Instagram, YouTube, TikTok, LinkedIn y Pinterest");
+                String redSocial = sc.nextLine().toUpperCase();
+                try {
+                RedSocial r = RedSocial.valueOf(redSocial);
+                System.out.println("Ingrese el nombre de la cuenta");
+                String usuario = sc.nextLine();
+                CuentaRedSocial cuentaRed = new CuentaRedSocial(usuario,r);
+                auspiciante.getListaRedesSociales().add(cuentaRed);
+                } catch (IllegalArgumentException except) {
+                System.out.println("Opción no válida");
+                }
+                System.out.println("Si quiere agregar otra red social, escriba Y");
+                respuesta = sc.nextLine();
+                }while(respuesta.equals("Y"));
+                auspiciantes.add(auspiciante);
+                break;
+            case 2:
+                System.out.println("Ingrese el numero de cedula del usuario que desea editar");
+                String cedu=sc.nextLine();
+                
+                for (Auspiciante a:auspiciantes){
+                    if (a.getCedula().equals(cedu)){
+                        String r;
+                        do {
+                          a.editar();
+                          System.out.println("Si desea seguir editando ingrese 'Y' ");
+                          r=sc.nextLine().toUpperCase();  
+                        } while (r.equals("Y"));
+                        
+                    }
+                }
+                break;
+            }
+        }while (num!=4); 
+        break;
+        
 
     }  
     }while(num!=5);
