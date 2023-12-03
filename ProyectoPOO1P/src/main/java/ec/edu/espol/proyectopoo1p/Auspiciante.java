@@ -28,8 +28,15 @@ public class Auspiciante extends Participante {
       System.out.println("5. Sitio web: "+ getSitio_web());
       System.out.println("6. Telefono: "+getTelefono());
       System.out.println("7. Sector: "+sector);
-      System.out.println("8. Redes Sociales: "+getListaRedesSociales());//cambiar print
+      System.out.print("8. Redes Sociales: ");//cambiar print
+      int co=0;
+      for(CuentaRedSocial c: getListaRedesSociales()){
+              System.out.print(co + "." + c.getRedSocial() + ":" + c.getCuenta()+"  ");
+              co++;
+            }
+      System.out.println();
       int num;
+      String respuesta;
       System.out.println("Ingrese el numero que desea editar ");
       num=sc.nextInt();
       sc.nextLine();
@@ -75,11 +82,40 @@ public class Auspiciante extends Participante {
           break;
           
         case 8:
-          System.out.println("Ingrese la nueva red social"); //Falta por implementar
+          System.out.println("Escribe borrar para eliminar una cuenta o agregar para ingresar una nueva cuenta");//cuidado las ñ
+          String cambio = sc.nextLine().toUpperCase();
+          int contador = 0;
+          if(cambio.equals("AGREGAR")){
+            do{                
+            System.out.println("Ingrese su red social: Twitter, Facebook, Instagram, YouTube, TikTok, LinkedIn y Pinterest");
+            String redSocial = sc.nextLine().toUpperCase();
+            try {
+            RedSocial r = RedSocial.valueOf(redSocial);
+            System.out.println("Ingrese el nombre de la cuenta");
+            String usuario = sc.nextLine();
+            CuentaRedSocial cuentaRedSocial = new CuentaRedSocial(usuario,r);
+            getListaRedesSociales().add(cuentaRedSocial);
+            } catch (IllegalArgumentException except) {
+            System.out.println("Opción no válida");
+            }
+            System.out.println("Si quiere agregar otra red social, escriba Y");
+            respuesta = sc.nextLine().toUpperCase();
+            }while(respuesta.equals("Y"));
+          }
+          if(cambio.equals("BORRAR")){
+            for(CuentaRedSocial c: getListaRedesSociales()){
+              System.out.println(contador + ". " + c.getRedSocial() + ":" + c.getCuenta());
+            }
+            System.out.println("Ingresar el número de la cuenta a borrar");
+            int numCuenta = sc.nextInt();
+            sc.nextLine();
+            getListaRedesSociales().remove(numCuenta);
+          }         
           break;
         default:
           break;
       }
     }
+
     
 }
