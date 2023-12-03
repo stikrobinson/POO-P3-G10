@@ -4,12 +4,15 @@
  */
 package ec.edu.espol.proyectopoo1p;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author GENERATION 10
  */
 public class AuspicianteEnFeria {
     private Auspiciante auspiciante;
+    
 
     public Auspiciante getAuspiciante() {
         return auspiciante;
@@ -18,6 +21,8 @@ public class AuspicianteEnFeria {
     public void setAuspiciante(Auspiciante auspiciante) {
         this.auspiciante = auspiciante;
     }
+    
+    
     
     
 }

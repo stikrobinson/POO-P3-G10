@@ -9,5 +9,5 @@ package ec.edu.espol.proyectopoo1p;
  * @author GENERATION 10
  */
 public enum SectorCubierto {
-    ALIMENTACION,EDUCACION,SALUD,VIVIENDA
+    ALIMENTACION,EDUCACION,SALUD,VESTIMENTA
 }

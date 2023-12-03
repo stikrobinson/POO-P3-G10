@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -26,8 +27,7 @@ public class Feria {
     private ArrayList<Emprendedor> listaEmprendedores;
     private ArrayList<Stand> stands;
     private ArrayList<Integer> codigosFerias;
-    
-    private ArrayList<Integer> standsPorSector;
+    private int[] standsPorSector;
 
     
     
@@ -44,14 +44,22 @@ public class Feria {
         listaEmprendedores=new ArrayList<>();
         stands=new ArrayList<>();
         codigosFerias=new ArrayList<>();
-        standsPorSector=new ArrayList<>();
-        /*int codigoAleatorio;
-        do{
-            codigoAleatorio = generarCodigoAleatorio();
-        } while(codigosFerias.contains(codigoAleatorio));
+        standsPorSector= new int[4];
         
-        codigosFerias.add(codigoAleatorio);
-        codigo = codigoAleatorio; */
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese la cantidad de stands para la sección de Alimentación: ");
+        int seccionA = sc.nextInt();
+        standsPorSector[0] = seccionA;
+        System.out.println("Ingrese la cantidad de stands para la sección de Educación: ");
+        int seccionB = sc.nextInt();
+        standsPorSector[1] = seccionB;
+        System.out.println("Ingrese la cantidad de stands para la sección de Educación");
+        int seccionC = sc.nextInt();
+        standsPorSector[2] = seccionC;
+        System.out.println("Ingrese la cantidad de stands para la sección de Vestimenta");
+        int seccionD = sc.nextInt();
+        standsPorSector[3] = seccionD;        
+                
         codigo=numCodigo;
         numCodigo++; //El codigo debe incrementar en uno cada vez que se itera
     }
@@ -105,7 +113,7 @@ public class Feria {
 
     
 
-    public ArrayList<Integer> getStandsPorSector() {
+    public int[] getStandsPorSector() {
         return standsPorSector;
         
         
@@ -159,43 +167,19 @@ public class Feria {
         this.codigosFerias = codigosFerias;
     }
 
-    public void setStandsPorSector(ArrayList<Integer> standsPorSector) {
+    public void setStandsPorSector(int[] standsPorSector) {
         this.standsPorSector = standsPorSector;
     }
     
     
     
-    public String calcularStands(){
-        int standsAlimentacion = 0;
-        int standsEducacion = 0;
-        int standsSalud = 0;
-        int standsVivienda = 0;
-        
-        for(Stand s: stands){
-            if(s.getSeccion()==SectorCubierto.ALIMENTACION){
-                standsAlimentacion++;
-            }
-            if(s.getSeccion()==SectorCubierto.EDUCACION){
-                standsEducacion++;
-            }
-            if(s.getSeccion()==SectorCubierto.SALUD){
-                standsSalud++;
-            }
-            if(s.getSeccion()==SectorCubierto.VIVIENDA){
-                standsVivienda++;
-            }
-            
-      
-        }
-        return "Stands de Alimentación: "+ standsAlimentacion + "\nStands de Educación: " + standsEducacion +
-                "\nStands de Salud: "+ standsSalud + "\nStands de Vivienda: "+ standsVivienda;
-    }
+    
 
     @Override
    public String toString(){
        return "Nombre: " + nombre + "\nDescripción: " + descripcion + "\nLugar: " + lugar + "\nFecha Inicio: " + fechaInicio
-               + "\nFecha Fin: " + fechaFin + "\nHorario: " + horario + "\nLista de Auspiciantes: " + listaAuspiciantes + "\nCantidad Stands por sección: \n"
-               + calcularStands();
+               + "\nFecha Fin: " + fechaFin + "\nHorario: " + horario + "\nLista de Auspiciantes: " + listaAuspiciantes + "\nCantidad Stands por sección: \n";
+               
    }
     public String mostrarInfo(){
         return "Codigo:" + codigo+ "\nNombre: " + nombre +"\nFecha Inicio: " + fechaInicio+  "\nLugar: " + lugar+ "\nCantidad de Auspiciantes: "+ listaAuspiciantes.size();   

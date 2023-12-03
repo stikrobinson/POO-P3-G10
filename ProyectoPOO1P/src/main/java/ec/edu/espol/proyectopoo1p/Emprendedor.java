@@ -15,7 +15,7 @@ public class Emprendedor extends Participante {
     private String descripcion;
     private static ArrayList<Emprendedor> emprendedores = new ArrayList<>();
     private SectorCubierto seccion;
-    private Stand standAsignado;
+    private ArrayList<Stand> standsAsignados;
 
     public Emprendedor(String c, String t, String e, String d, String s, String n, String responsable, String descripcion){
       super(c,t,e,d,s,n);
@@ -31,13 +31,15 @@ public class Emprendedor extends Participante {
         this.seccion = seccion;
     }
 
-    public Stand getStandAsignado() {
-        return standAsignado;
+    public ArrayList<Stand> getStandsAsignados() {
+        return standsAsignados;
     }
 
-    public void setStandAsignado(Stand standAsignado) {
-        this.standAsignado = standAsignado;
+    public void setStandsAsignados(ArrayList<Stand> standsAsignados) {
+        this.standsAsignados = standsAsignados;
     }
+
+   
     
     
 
@@ -72,7 +74,7 @@ public class Emprendedor extends Participante {
     @Override
     public String toString(){
         return "Nombre del emprendimiento: " + nombreEmprendimiento + "\nDescripción: " + descripcion + "\nSección" + seccion
-                + "\nStand asignado: "+ standAsignado;
+                + "\nStand asignado: "+ standsAsignados;
             
     }
 }

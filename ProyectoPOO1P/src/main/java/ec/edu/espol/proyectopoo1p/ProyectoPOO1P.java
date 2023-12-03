@@ -18,17 +18,11 @@ public class ProyectoPOO1P {
     public static void main(String[] args) {
         
         ArrayList <Feria> ferias = new ArrayList<>();
-        ArrayList <Emprendedor> emprendedores = new ArrayList<>();
+        
         int num;
         do{
         
-        System.out.println("Bienvenido a la aplicación de manejo de ferias");
-        System.out.println("\nEscoja una opción:");
-        System.out.println("1. Administración de Ferias");
-        System.out.println("2. Administración de Emprendedores");
-        System.out.println("3. Administración de Auspiciantes");
-        System.out.println("4. Administración de Stands");
-        System.out.println("5. Salir");
+        Utilitaria.primerMenu();
         
         Scanner sc = new Scanner(System.in);
         num = sc.nextInt();
@@ -131,7 +125,7 @@ public class ProyectoPOO1P {
                         for(Feria f: ferias){
                             if(f.getCodigo() == codigoIngresado){
                                 for(Emprendedor e: f.getListaEmprendedores()){
-                                    if(e.getStandAsignado() != null){
+                                    if(e.getStandsAsignados() != null){
                                         System.out.println(e);
                                     }
                                 }
@@ -217,8 +211,156 @@ public class ProyectoPOO1P {
             }
         }while(num!=3);
         num = -1;
-
-    }  
-    }while(num!=5);
-}
+        
+        case 3:
+            break;
+        case 4:
+            System.out.println("Ingrese el código de la feria: ");
+            int codigoFeriaIngresado = sc.nextInt();
+            
+            
+            for(Feria f: ferias){
+                if(codigoFeriaIngresado == f.getCodigo()){
+                    System.out.println("Distribución de Stands:");
+                    System.out.println("Sección 1: ");
+                    for(Stand s: f.getStands()){
+                        if(s.getLetra() == 'A'){
+                            if(s.getOcupadoPor() == null)
+                            System.out.println("[" + s + f.getStands().indexOf(s)+ 1 + "]");
+                            else{
+                                System.out.println("[" + s + f.getStands().indexOf(s)+ 1 + "*"+ "]");
+                            }
+                     
+                    }
+                }   System.out.println("Sección 2:");
+                    for(Stand s: f.getStands()){
+                        if(s.getLetra() == 'B'){
+                            if(s.getOcupadoPor() == null)
+                                System.out.println("[" + s + f.getStands().indexOf(s)+ 1 + "]");
+                            else{
+                                System.out.println("[" + s + f.getStands().indexOf(s)+ 1 + "*"+ "]");
+                            }
+                    }   
+   
+                }   System.out.println("Sección 3:");
+                    for(Stand s: f.getStands()){
+                        if(s.getLetra() == 'C'){
+                            if(s.getOcupadoPor() == null)
+                            System.out.println("[" + s + f.getStands().indexOf(s)+ 1 + "]");
+                            else{
+                                System.out.println("[" + s + f.getStands().indexOf(s)+ 1 + "*"+ "]");
+                            }
+                        }
+                }   System.out.println("Sección 4:");
+                    for(Stand s: f.getStands()){
+                        if(s.getLetra() == 'D'){
+                            if(s.getOcupadoPor() == null)
+                            System.out.println("[" + s + f.getStands().indexOf(s)+ 1 + "]");
+                            else{
+                                System.out.println("[" + s + f.getStands().indexOf(s)+ 1 + "*"+ "]");
+                            }
+                        }
+                }
+                    
+                    
+                    
+                    
+                    
+                    
+                } 
+            
+            }
+            
+             System.out.println("1. Reservar Stand");
+             System.out.println("2. Mostrar información Stand");
+             System.out.println("3. Regresar");
+             
+             int opcionElegida = sc.nextInt();
+             
+             if(opcionElegida == 1){
+                 System.out.println("Ingrese el código del stand que desea reservar: ");
+                 int codigoStandAReservar = sc.nextInt();
+                 for(Feria f: ferias){
+                     for(Stand s: f.getStands()){
+                      if(s.getCodigoStand() == codigoStandAReservar){   
+                        if(s.getOcupadoPor() != null){
+                          System.out.println("Lo sentimos, este stand está ocupado");
+                        }else{
+                         System.out.println("Ingrese el código del emprendedor o auspiciante:");
+                         int codigoIngresado = sc.nextInt();
+                         for(Emprendedor e: f.getListaEmprendedores()){
+                          if(e.getCodigo() == codigoIngresado){
+                              if(e.getStandsAsignados().size() <= 2){
+                                  s.setOcupadoPor(e);
+                                  e.getStandsAsignados().add(s);
+                                  
+                                  
+                              }
+                              
+                          }
+                        }for(AuspicianteEnFeria a: f.getListaAuspiciantes()){
+                          if(a.getAuspiciante().getCodigo() == codigoIngresado){
+                              if(a.getAuspiciante().getStandsAsignados().size() < 1)
+                                s.setOcupadoPor(a.getAuspiciante());
+                          }
+                        }
+                          System.out.println("Distribución de Stands:");
+                    System.out.println("Sección 1: ");
+                    for(Stand s1: f.getStands()){
+                        if(s.getLetra() == 'A'){
+                            if(s1.getOcupadoPor() == null)
+                            System.out.println("[" + s1 + f.getStands().indexOf(s1)+ 1 + "]");
+                            else{
+                                System.out.println("[" + s1 + f.getStands().indexOf(s1)+ 1 + "*"+ "]");
+                            }
+                     
+                    }
+                }   System.out.println("Sección 2:");
+                    for(Stand s1: f.getStands()){
+                        if(s1.getLetra() == 'B'){
+                            if(s1.getOcupadoPor() == null)
+                                System.out.println("[" + s1 + f.getStands().indexOf(s1)+ 1 + "]");
+                            else{
+                                System.out.println("[" + s1 + f.getStands().indexOf(s1)+ 1 + "*"+ "]");
+                            }
+                    }   
+   
+                }   System.out.println("Sección 3:");
+                    for(Stand s1: f.getStands()){
+                        if(s1.getLetra() == 'C'){
+                            if(s1.getOcupadoPor() == null)
+                            System.out.println("[" + s1 + f.getStands().indexOf(s1)+ 1 + "]");
+                            else{
+                                System.out.println("[" + s1 + f.getStands().indexOf(s1)+ 1 + "*"+ "]");
+                            }
+                        }
+                }   System.out.println("Sección 4:");
+                    for(Stand s1: f.getStands()){
+                        if(s1.getLetra() == 'D'){
+                            if(s1.getOcupadoPor() == null)
+                            System.out.println("[" + s1 + f.getStands().indexOf(s1)+ 1 + "]");
+                            else{
+                                System.out.println("[" + s1 + f.getStands().indexOf(s1)+ 1 + "*"+ "]");
+                            }
+                        }
+                }
+                        }
+                     } 
+                    }
+                      
+                 }
+             }else if(opcionElegida == 2){
+                 System.out.println("Ingrese el código del stand que desea visualizar: ");
+                 int codigoAVisualizar = sc.nextInt();
+                 for(Feria f: ferias){
+                     for(Stand s: f.getStands()){
+                         if(s.getCodigoStand() == codigoAVisualizar){
+                             System.out.println("" + s.getCodigoStand()+s.getFechaAsignacion() + s.getOcupadoPor());
+                         }
+                     }
+                 }
+             }
+   }
+  }while(num!=5);   
+ }
 }

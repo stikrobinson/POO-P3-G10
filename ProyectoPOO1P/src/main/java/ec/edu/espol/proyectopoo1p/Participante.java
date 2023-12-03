@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Participante {
     
+    private int codigo;
     private String cedula;
     private String telefono;
     private String email;
@@ -85,8 +86,16 @@ public void setListaRedesSociales(ArrayList<CuentaRedSocial> listaRedesSociales)
       sitio_web = s;
       nombre_responsable = n;
       listaRedesSociales = new ArrayList<>();
+      
+      codigo++;
+      
+      
 
     
+    }
+
+    public int getCodigo() {
+        return codigo;
     }
 }
 
