@@ -25,9 +25,9 @@ public class Feria {
     private String lugar;
     private ArrayList<AuspicianteEnFeria> listaAuspiciantes;
     private ArrayList<Emprendedor> listaEmprendedores;
-    private ArrayList<Stand> stands;
+    private ArrayList<Stand> stands = new ArrayList<>();
     private ArrayList<Integer> codigosFerias;
-    private int[] standsPorSector;
+    private int[] standsPorSector = new int[4];
 
     
     
@@ -42,12 +42,12 @@ public class Feria {
         //Inicializo ArrayList
         listaAuspiciantes=new ArrayList<>();
         listaEmprendedores=new ArrayList<>();
-        stands=new ArrayList<>();
+        
         codigosFerias=new ArrayList<>();
-        standsPorSector= new int[4];
+        
         
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese la cantidad de stands para la sección de Alimentación: ");
+        /*System.out.println("Ingrese la cantidad de stands para la sección de Alimentación: ");
         int seccionA = sc.nextInt();
         standsPorSector[0] = seccionA;
         System.out.println("Ingrese la cantidad de stands para la sección de Educación: ");
@@ -59,6 +59,8 @@ public class Feria {
         System.out.println("Ingrese la cantidad de stands para la sección de Vestimenta");
         int seccionD = sc.nextInt();
         standsPorSector[3] = seccionD;        
+        
+        */
                 
         codigo=numCodigo;
         numCodigo++; //El codigo debe incrementar en uno cada vez que se itera

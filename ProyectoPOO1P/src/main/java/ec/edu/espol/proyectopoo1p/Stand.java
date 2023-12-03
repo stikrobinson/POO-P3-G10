@@ -16,9 +16,20 @@ public class Stand {
     private LocalDate fechaAsignacion;
     private Participante ocupadoPor;
     private char letra;
-    private int numero;
-    
+   
 
+    public Stand(int codigoStand, SectorCubierto seccion, LocalDate fechaAsignacion, Participante ocupadoPor, char letra) {
+        this.codigoStand = codigoStand;
+        this.seccion = seccion;
+        this.fechaAsignacion = fechaAsignacion;
+        this.ocupadoPor = ocupadoPor;
+        this.letra = letra;
+        
+    }
+    
+    
+    
+    
     public int getCodigoStand() {
         return codigoStand;
     }

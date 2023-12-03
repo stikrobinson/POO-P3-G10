@@ -17,15 +17,16 @@ public class ProyectoPOO1P {
 
     public static void main(String[] args) {
         
+        ArrayList <Feria> ferias = new ArrayList<>();
+        
         LocalDate fechaInicioEjemplo = LocalDate.of(2023, 1, 1);
         LocalDate fechaFinEjemplo = LocalDate.of(2023, 12, 31);
         LocalTime horaEjemplo = LocalTime.of(12, 30, 0);
         
         Feria feriaPrueba = new Feria("Esta es una feria de prueba", "Feria de Prueba", fechaInicioEjemplo, fechaFinEjemplo, horaEjemplo, "Guayaquil");
-        feriaPrueba.getStandsPorSector()[0] = 1;
-        feriaPrueba.getStandsPorSector()[1] = 1;
-        feriaPrueba.getStandsPorSector()[2] = 1;
-        feriaPrueba.getStandsPorSector()[3] = 1;
+        
+        
+        
         
         
         Auspiciante auspicianteP = new Auspiciante("0914389777", "0939770499", "auspiciante@gmail.com", "Calle A y B Casa 1", "google.com", "Juan", "Marcos", SectorCubierto.ALIMENTACION);
@@ -37,22 +38,32 @@ public class ProyectoPOO1P {
         Emprendedor emprendedor3 = new Emprendedor("345678", "555-4321", "correo3@ejemplo.com", "Calle Secundaria 789", "www.terceremprendimiento.com", "Roberto Gómez", "Responsable3", "Descripción3");
         Emprendedor emprendedor4 = new Emprendedor("901234", "555-8765", "correo4@ejemplo.com", "Avenida Principal 012", "www.cuartoemprendimiento.com", "Laura Martínez", "Responsable4", "Descripción4");
         
-        ArrayList <Feria> ferias = new ArrayList<>();
+        
         
         feriaPrueba.getListaAuspiciantes().add(af);
         feriaPrueba.getListaEmprendedores().add(emprendedor1);
         feriaPrueba.getListaEmprendedores().add(emprendedor2);
         feriaPrueba.getListaEmprendedores().add(emprendedor3);
         feriaPrueba.getListaEmprendedores().add(emprendedor4);
+        
+        Stand stand1 = new Stand(0,SectorCubierto.ALIMENTACION, fechaInicioEjemplo, emprendedor1, 'A' );
+        Stand stand2 = new Stand(1,SectorCubierto.EDUCACION, fechaInicioEjemplo, emprendedor2, 'B' );
+        Stand stand3 = new Stand(2,SectorCubierto.SALUD, fechaInicioEjemplo, emprendedor3, 'C' );
+        Stand stand4 = new Stand(3,SectorCubierto.VESTIMENTA, fechaInicioEjemplo, emprendedor4, 'D' );
+        
+        
+        
+        
+        feriaPrueba.getStands().add(stand1);
+        feriaPrueba.getStands().add(stand2);
+        feriaPrueba.getStands().add(stand3);
+        feriaPrueba.getStands().add(stand4);
+        
         ferias.add(feriaPrueba);
-        
-        feriaPrueba.getStands().get(0).setOcupadoPor(emprendedor1);
-        feriaPrueba.getStands().get(1).setOcupadoPor(emprendedor2);
-        
-        
         
         
         int num;
+        
         ArrayList <Auspiciante> auspiciantes=new ArrayList<>();
         ArrayList <AuspicianteEnFeria> auspiciantesenFeria=new ArrayList<>();
         do{
