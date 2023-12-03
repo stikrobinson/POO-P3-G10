@@ -369,7 +369,7 @@ public class ProyectoPOO1P {
             }
         }while(num!=3);
         num = -1;
-
+        break;
         
         case 3:
         do{
@@ -491,11 +491,23 @@ public class ProyectoPOO1P {
 
                    }    
                 }
+                break;
             case 4:
+                break;
+            default:
+                System.out.println("Opción no válida. Inténtalo de nuevo.");
+                break;
+        }
+        }while(num!=4);
+           num = -1;
+           break;
+        
+         case 4:
+            int opcionElegida;
             System.out.println("Ingrese el código de la feria: ");
             int codigoFeriaIngresado = sc.nextInt();
             
-            
+            do{
             for(Feria f: ferias){
                 if(codigoFeriaIngresado == f.getCodigo()){
                     System.out.println("Distribución de Stands:");
@@ -553,7 +565,7 @@ public class ProyectoPOO1P {
              System.out.println("2. Mostrar información Stand");
              System.out.println("3. Regresar");
              
-             int opcionElegida = sc.nextInt();
+             opcionElegida = sc.nextInt();
              
              if(opcionElegida == 1){
                  System.out.println("Ingrese el código del stand que desea reservar: ");
@@ -638,16 +650,13 @@ public class ProyectoPOO1P {
                      }
                  }
              }
-    }
-   }while(num!=5);   
-  }
-
-        
-            
-        
-
-    
-
+             else if (opcionElegida>3){
+             System.out.println("Opción no válida. Inténtalo de nuevo.");
+             }
+             
+    }while(opcionElegida!=3);
+     num = -1;
+   }
   }while(num!=5);
  }
 }    
