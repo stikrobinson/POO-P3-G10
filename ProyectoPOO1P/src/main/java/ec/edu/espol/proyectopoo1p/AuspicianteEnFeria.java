@@ -12,6 +12,19 @@ import java.util.ArrayList;
  */
 public class AuspicianteEnFeria {
     private Auspiciante auspiciante;
+    private boolean stand;    
+    private String descripcion;
+    
+    public AuspicianteEnFeria(Auspiciante auspiciante){
+        this.auspiciante = auspiciante;
+    }
+    
+    public AuspicianteEnFeria(Auspiciante a, String des, boolean s) {
+        auspiciante = a;
+        descripcion = des;
+        stand = s;
+    }
+    
     
 
     public Auspiciante getAuspiciante() {
