@@ -144,6 +144,9 @@ public class Auspiciante extends Participante {
     public void setStandsAsignados(ArrayList<Stand> standsAsignados) {
         this.standsAsignados = standsAsignados;
     }
+    public String getNombre(){
+        return nombre;
+    }
     
     
 

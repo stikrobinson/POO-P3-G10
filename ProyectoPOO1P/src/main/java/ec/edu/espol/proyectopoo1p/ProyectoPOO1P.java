@@ -26,9 +26,6 @@ public class ProyectoPOO1P {
         Feria feriaPrueba = new Feria("Esta es una feria de prueba", "Feria de Prueba", fechaInicioEjemplo, fechaFinEjemplo, horaEjemplo, "Guayaquil");
         
         
-        
-        
-        
         Auspiciante auspicianteP = new Auspiciante("0914389777", "0939770499", "auspiciante@gmail.com", "Calle A y B Casa 1", "google.com", "Juan", "Marcos", SectorCubierto.ALIMENTACION);
         AuspicianteEnFeria af = new AuspicianteEnFeria(auspicianteP);
         
@@ -60,12 +57,18 @@ public class ProyectoPOO1P {
         feriaPrueba.getStands().add(stand4);
         
         ferias.add(feriaPrueba);
+        Emprendedor.getEmprendedores().add(emprendedor1);
+        Emprendedor.getEmprendedores().add(emprendedor2);
+        Emprendedor.getEmprendedores().add(emprendedor3);
+        Emprendedor.getEmprendedores().add(emprendedor4);
+        
         
         
         int num;
         
         ArrayList <Auspiciante> auspiciantes=new ArrayList<>();
         ArrayList <AuspicianteEnFeria> auspiciantesenFeria=new ArrayList<>();
+        auspiciantes.add(auspicianteP);
         do{
         
         Utilitaria.primerMenu();
@@ -373,6 +376,12 @@ public class ProyectoPOO1P {
         
         case 3:
         do{
+            if(auspiciantes.size()>0){
+               System.out.println("Listado de auspiciantes:");
+               for(Auspiciante a: auspiciantes){
+                   System.out.println(a.getNombre());
+               }
+            }
             System.out.println("1. Registrar auspiciante");
             System.out.println("2. Editar auspiciante");
             System.out.println("3. Asignar auspiciante a feria");
