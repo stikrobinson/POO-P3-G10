@@ -18,8 +18,8 @@ public class Emprendedor extends Participante {
     private Stand standAsignado;
 
     public Emprendedor(String c, String t, String e, String d, String s, String n, String responsable, String descripcion){
-      super(c,t,e,d,s,n);
-      nombreEmprendimiento = responsable;
+      super(c,t,e,d,s,responsable);
+      nombreEmprendimiento = n;
       this.descripcion = descripcion;
     }
   
@@ -68,12 +68,20 @@ public class Emprendedor extends Participante {
     public ArrayList<CuentaRedSocial> getListaRedesSociales(){
       return super.getListaRedesSociales();
     }
+    public String mostrarInfo(){
+      return "\nNombre del emprendimiento: " + nombreEmprendimiento + "\n" + super.toString() + "\nDescripcion: " + descripcion; 
+    }
+
+    public String mostrarInfoBasica(){
+      return "Cédula: " + super.getCedula() + "\nNombre: " + nombreEmprendimiento + "\nTeléfono: " + super.getTelefono() + "\nEmail: " + super.getEmail();
+    }
   
     @Override
     public String toString(){
-        return "Nombre del emprendimiento: " + nombreEmprendimiento + "\nDescripción: " + descripcion + "\nSección" + seccion
+        return super.toString() + "Nombre del emprendimiento: " + nombreEmprendimiento + "\nDescripción: " + descripcion + "\nSección" + seccion
                 + "\nStand asignado: "+ standAsignado;
             
     }
 }
+
 
