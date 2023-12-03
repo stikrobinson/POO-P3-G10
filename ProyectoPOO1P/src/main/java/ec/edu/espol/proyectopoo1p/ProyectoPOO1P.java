@@ -21,6 +21,7 @@ public class ProyectoPOO1P {
         ArrayList <Emprendedor> emprendedores = new ArrayList<>();
         int num;
         ArrayList <Auspiciante> auspiciantes=new ArrayList<>();
+        ArrayList <AuspicianteEnFeria> auspiciantesenFeria=new ArrayList<>();
         do{
         
         System.out.println("Bienvenido a la aplicación de manejo de ferias");
@@ -405,6 +406,44 @@ public class ProyectoPOO1P {
                         
                     }
                 }
+                break;
+            case 3:
+                System.out.println("Ingrese un codigo de feria");
+                int cod=sc.nextInt();
+                sc.nextLine();
+                System.out.println("Ingrese un numero de cedula o RUC");
+                String ced= sc.nextLine();
+                boolean verificador_1=false;
+                boolean verificador_2=false;
+                int in_1=0;
+                int in_2=0;
+                for (Feria f:ferias){
+                    if (f.getCodigo()==(cod)){
+                        verificador_1=true;
+                        in_1=ferias.indexOf(f);
+                    }
+                }
+                for(Auspiciante a: auspiciantes){
+                    if(a.getCedula().equals(ced)){
+                        verificador_2=true;
+                        in_2=auspiciantes.indexOf(a);
+                    }
+                }
+                if(verificador_1&&verificador_2){
+                    System.out.println();//descripcion del auspicio?
+                    String desc=sc.nextLine();
+                    System.out.println("Incluye stand en la feria:(Si/No)");
+                    String r=sc.nextLine().toUpperCase();
+                    if (r.equals("SI")){//Falta
+
+                    }
+                    
+                    Feria f=ferias.get(in_1);
+                    AuspicianteEnFeria a=new AuspicianteEnFeria(auspiciantes.get(in_2));
+                    f.getListaAuspiciantes().add(a);
+
+                }
+            
                 break;
             }
         }while (num!=4); 
