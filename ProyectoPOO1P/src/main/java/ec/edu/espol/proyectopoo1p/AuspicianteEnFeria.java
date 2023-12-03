@@ -11,6 +11,9 @@ package ec.edu.espol.proyectopoo1p;
 public class AuspicianteEnFeria {
     private Auspiciante auspiciante;
 
+    public AuspicianteEnFeria(Auspiciante a){
+        auspiciante=a;
+    }
     public Auspiciante getAuspiciante() {
         return auspiciante;
     }
