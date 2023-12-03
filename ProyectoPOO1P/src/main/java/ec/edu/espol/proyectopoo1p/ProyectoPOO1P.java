@@ -54,6 +54,7 @@ public class ProyectoPOO1P {
         
         int num;
         ArrayList <Auspiciante> auspiciantes=new ArrayList<>();
+        ArrayList <AuspicianteEnFeria> auspiciantesenFeria=new ArrayList<>();
         do{
         
         Utilitaria.primerMenu();
@@ -462,6 +463,7 @@ public class ProyectoPOO1P {
                     String desc=sc.nextLine();
                     System.out.println("Incluye stand en la feria:(Si/No)");
                     String r=sc.nextLine().toUpperCase();
+
                     if (r.equals("SI")){//Falta
                        if (r.equals("SI")){
                         Feria f=ferias.get(in_1);
@@ -470,10 +472,12 @@ public class ProyectoPOO1P {
                     
 
                                         else{
+
                         Feria f=ferias.get(in_1);
                     AuspicianteEnFeria a=new AuspicianteEnFeria(auspiciantes.get(in_2),desc,false);
                     f.getListaAuspiciantes().add(a);
                     }
+
                    }    
                 }
             case 4:
@@ -531,6 +535,7 @@ public class ProyectoPOO1P {
                     
                 } 
             
+
             }
             
              System.out.println("1. Reservar Stand");

@@ -89,7 +89,9 @@ public class Auspiciante extends Participante {
           break;
           
         case 8:
+
                     System.out.println("Escribe borrar para eliminar una cuenta o agregar para ingresar una nueva cuenta");//cuidado las ñ
+
           String cambio = sc.nextLine().toUpperCase();
           int contador = 0;
           if(cambio.equals("AGREGAR")){
@@ -117,12 +119,15 @@ public class Auspiciante extends Participante {
             int numCuenta = sc.nextInt();
             sc.nextLine();
             getListaRedesSociales().remove(numCuenta);
+
           }   
+
           break;
         default:
           break;
       }
     }
+
 
     public SectorCubierto getSector() {
         return sector;
@@ -141,5 +146,6 @@ public class Auspiciante extends Participante {
     }
     
     
+
     
 }

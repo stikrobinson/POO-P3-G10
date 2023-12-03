@@ -14,6 +14,7 @@ public class AuspicianteEnFeria {
     private Auspiciante auspiciante;
     private boolean stand;    
     private String descripcion;
+
     
     public AuspicianteEnFeria(Auspiciante auspiciante){
         this.auspiciante = auspiciante;
@@ -26,6 +27,7 @@ public class AuspicianteEnFeria {
     }
     
     
+
 
     public Auspiciante getAuspiciante() {
         return auspiciante;
