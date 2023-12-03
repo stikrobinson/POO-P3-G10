@@ -430,17 +430,21 @@ public class ProyectoPOO1P {
                     }
                 }
                 if(verificador_1&&verificador_2){
-                    System.out.println();//descripcion del auspicio?
+                    System.out.println("Ingrese descripcion");//descripcion del auspicio?
                     String desc=sc.nextLine();
                     System.out.println("Incluye stand en la feria:(Si/No)");
                     String r=sc.nextLine().toUpperCase();
-                    if (r.equals("SI")){//Falta
-
+                    if (r.equals("SI")){
+                        Feria f=ferias.get(in_1);
+                    AuspicianteEnFeria a=new AuspicianteEnFeria(auspiciantes.get(in_2),desc,true);
+                    f.getListaAuspiciantes().add(a);
+                    }
+                    else{
+                        Feria f=ferias.get(in_1);
+                    AuspicianteEnFeria a=new AuspicianteEnFeria(auspiciantes.get(in_2),desc,false);
+                    f.getListaAuspiciantes().add(a);
                     }
                     
-                    Feria f=ferias.get(in_1);
-                    AuspicianteEnFeria a=new AuspicianteEnFeria(auspiciantes.get(in_2));
-                    f.getListaAuspiciantes().add(a);
 
                 }
             
