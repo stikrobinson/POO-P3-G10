@@ -150,10 +150,16 @@ public class ProyectoPOO1P {
             break;
         case 2: 
         do{
+            if(Emprendedor.getEmprendedores().size()>0){
+              System.out.println("\nListado de emprendedores:");
+              for (Emprendedor e: Emprendedor.getEmprendedores()){
+                  System.out.println(e.mostrarInfoBasica()+"\n");
+              }
+            }
             System.out.println("1. Registrar emprendedor");
             System.out.println("2. Editar emprendedor");
             System.out.println("3. Regresar");
-            
+
             num = sc.nextInt();
             sc.nextLine();
             switch(num){
@@ -172,23 +178,38 @@ public class ProyectoPOO1P {
                     verificador = false;
                   }
                 }
-                }while(verificador==true);
+                }while(verificador || (cedula.equals("")));
+                String nombre;
+                do{
                 System.out.println("Ingrese el nombre");
-                String nombre = sc.nextLine();
+                nombre = sc.nextLine();
+                }while(nombre.equals(""));
+                String telefono;
+                do{
                 System.out.println("Ingrese el telefono");
-                String telefono = sc.nextLine();
+                telefono = sc.nextLine();
+                }while(telefono.equals(""));
+                String email;
+                do{
                 System.out.println("Ingrese el email");
-                String email = sc.nextLine();
+                email = sc.nextLine();
+                }while(email.equals(""));
                 System.out.println("Ingrese la dirección");
                 String direccion = sc.nextLine();
                 System.out.println("Ingrese el sitio web");
                 String sitioWeb = sc.nextLine();
+                String responsable;
+                do{
                 System.out.println("Ingrese el nombre de la persona responsable");
-                String responsable = sc.nextLine();
+                responsable = sc.nextLine();
+                }while(responsable.equals(""));
+                String descripcion;
+                do{
                 System.out.println("Ingrese la descripción de los servicios que ofrece");
-                String descripcion = sc.nextLine();
+                descripcion = sc.nextLine();
+                }while(descripcion.equals(""));
                 System.out.println("Nombres en cada red social que maneja");
-                Emprendedor emprender = new Emprendedor(cedula, nombre, telefono, email, direccion, sitioWeb, responsable, descripcion);
+                Emprendedor emprender = new Emprendedor(cedula, telefono, email, direccion, sitioWeb, nombre, responsable, descripcion);
                 Emprendedor.getEmprendedores().add(emprender);
                 String respuesta;
                 do{                
@@ -203,12 +224,103 @@ public class ProyectoPOO1P {
                 } catch (IllegalArgumentException except) {
                 System.out.println("Opción no válida");
                 }
+                respuesta = "";
+                if(emprender.getListaRedesSociales().size()>0){
                 System.out.println("Si quiere agregar otra red social, escriba Y");
                 respuesta = sc.nextLine();
-                }while(respuesta.equals("Y"));
+                }
+                }while(respuesta.equals("Y") || emprender.getListaRedesSociales().size()==0);
                 break;
                 case 2:
-                System.out.println("2");
+                verificador = true;
+                System.out.println("Ingrese la cédula o el RUC del emprendedor a editar");
+                cedula = sc.nextLine();
+                for(Emprendedor emp: Emprendedor.getEmprendedores()){
+                  if(emp.getCedula().equals(cedula)){
+                    verificador = false;
+                    System.out.println(emp.mostrarInfo());
+                    System.out.println("Indique el campo a cambiar, no se puede cambiar la cédula");
+                    String campo = sc.nextLine().toUpperCase();
+                    switch(campo){
+                      case "NOMBRE DEL EMPRENDIMIENTO":
+                        System.out.println("Ingrese el nuevo nombre");
+                        String cambio = sc.nextLine();  
+                        emp.setNombreEmprendimiento(cambio);
+                        break;
+                      case "RESPONSABLE":
+                        System.out.println("Ingrese el nuevo responsable");
+                        cambio = sc.nextLine();
+                        emp.setNombre_responsable(cambio);
+                        break;
+                      case "TELEFONO":
+                        System.out.println("Ingrese el nuevo teléfono");
+                        cambio = sc.nextLine();
+                        emp.setTelefono(cambio);
+                        break;
+                      case "CEDULA":
+                        System.out.println("Ingrese la nueva cédula o RUC");
+                        cambio = sc.nextLine();
+                        emp.setCedula(cambio);
+                        break;
+                      case "EMAIL":
+                        System.out.println("Ingrese el nuevo email");
+                        cambio = sc.nextLine();
+                        emp.setEmail(cambio);
+                        break;
+                      case "DIRECCION":
+                        System.out.println("Ingrese la nueva dirección");
+                        cambio = sc.nextLine();
+                        emp.setDireccion(cambio);
+                        break;
+                      case "SITIO WEB":
+                        System.out.println("Ingrese el nuevo sitio web");
+                        cambio = sc.nextLine();
+                        emp.setSitio_web(cambio);
+                        break;
+                      case "DESCRIPCION":
+                        System.out.println("Ingrese la nueva descripción");
+                        cambio = sc.nextLine();
+                        break;
+                      case "REDES SOCIALES":
+                        System.out.println("Escribe borrar para eliminar una cuenta o añadir para ingresar una nueva cuenta");
+                        cambio = sc.nextLine().toUpperCase();
+                        int contador = 0;
+                        if(cambio.equals("AÑADIR")){
+                          do{                
+                          System.out.println("Ingrese su red social: Twitter, Facebook, Instagram, YouTube, TikTok, LinkedIn y Pinterest");
+                          String redSocial = sc.nextLine().toUpperCase();
+                          try {
+                          RedSocial r = RedSocial.valueOf(redSocial);
+                          System.out.println("Ingrese el nombre de la cuenta");
+                          String usuario = sc.nextLine();
+                          CuentaRedSocial cuentaRedSocial = new CuentaRedSocial(usuario,r);
+                          emp.getListaRedesSociales().add(cuentaRedSocial);
+                          } catch (IllegalArgumentException except) {
+                          System.out.println("Opción no válida");
+                          }
+                          System.out.println("Si quiere agregar otra red social, escriba Y");
+                          respuesta = sc.nextLine();
+                          }while(respuesta.equals("Y"));
+                        }
+                        if(cambio.equals("BORRAR")){
+                          for(CuentaRedSocial c: emp.getListaRedesSociales()){
+                            System.out.println(contador + ". " + c.getRedSocial() + ":" + c.getCuenta());
+                          }
+                          System.out.println("Ingresar el número de la cuenta a borrar");
+                          int numCuenta = sc.nextInt();
+                          sc.nextLine();
+                          emp.getListaRedesSociales().remove(numCuenta);
+                        }
+                        break;
+                        default:
+                        System.out.println("Campo inválido. Intentelo de nuevo.");
+                        break;
+                    }
+                  }
+                }
+                if(verificador){
+                  System.out.println("No se encontró al emprendedor.");
+                }
                 break;
                 case 3:
                 break;
