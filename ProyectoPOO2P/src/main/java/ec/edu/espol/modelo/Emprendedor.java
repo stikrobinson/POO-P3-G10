@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Emprendedor extends Participante {
     private String nombreEmprendimiento;
     private String descripcion;
-    private static ArrayList<Emprendedor> emprendedores = new ArrayList<>();
+private static ArrayList<Emprendedor> emprendedores = new ArrayList<>();
     private SectorCubierto seccion;
     private ArrayList<Stand> standsAsignados;
 

@@ -88,11 +88,22 @@ public void setListaRedesSociales(ArrayList<CuentaRedSocial> listaRedesSociales)
       listaRedesSociales = new ArrayList<>();
       
       codigo++;
+  }
       
-      
-
-    
+  @Override
+  public String toString(){
+    String redes = "";
+    int contador = 1;
+    for(CuentaRedSocial cuenta: listaRedesSociales){
+      redes = redes + cuenta;
+      if(contador != listaRedesSociales.size()){
+        redes = redes + " - ";
+      }
+      contador++;
     }
+    return "Cedula: " + cedula + "\nTelefono: " + telefono + "\nEmail: " + email + "\nDireccion: " + direccion + "\nSitio web: " + sitio_web + "\nResponsable: " + nombre_responsable + "\nRedes Sociales:\n" + redes;
+  }
+
 
     public int getCodigo() {
         return codigo;

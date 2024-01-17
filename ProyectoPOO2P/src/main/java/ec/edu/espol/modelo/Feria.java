@@ -26,7 +26,6 @@ public class Feria {
     private ArrayList<AuspicianteEnFeria> listaAuspiciantes;
     private ArrayList<Emprendedor> listaEmprendedores;
     private ArrayList<Stand> stands = new ArrayList<>();
-    private ArrayList<Integer> codigosFerias;
     private int[] standsPorSector = new int[4];
 
     
@@ -43,7 +42,6 @@ public class Feria {
         listaAuspiciantes=new ArrayList<>();
         listaEmprendedores=new ArrayList<>();
         
-        codigosFerias=new ArrayList<>();
         
         
         Scanner sc = new Scanner(System.in);
@@ -66,9 +64,6 @@ public class Feria {
         numCodigo++; //El codigo debe incrementar en uno cada vez que se itera
     }
 
-     private static int generarCodigoAleatorio() {
-        return 10000 + new Random().nextInt(90000);
-    }
     
     
     public String getDescripcion() {
@@ -121,9 +116,6 @@ public class Feria {
         
     }
     
-    public ArrayList<Integer> getCodigosFerias() {
-        return codigosFerias;
-    }
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -163,10 +155,6 @@ public class Feria {
 
     public void setStands(ArrayList<Stand> stands) {
         this.stands = stands;
-    }
-
-    public void setCodigosFerias(ArrayList<Integer> codigosFerias) {
-        this.codigosFerias = codigosFerias;
     }
 
     public void setStandsPorSector(int[] standsPorSector) {

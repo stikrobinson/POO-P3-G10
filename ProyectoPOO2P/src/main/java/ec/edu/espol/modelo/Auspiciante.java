@@ -18,7 +18,7 @@ public class Auspiciante extends Participante {
 
     
 
-    private ArrayList<Auspiciante> auspiciantes;
+    private static ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
     private String nombre;
     public Auspiciante(String c, String t, String e, String d, String s, String n,String nom,SectorCubierto se){
 
@@ -26,7 +26,7 @@ public class Auspiciante extends Participante {
       nombre =nom;
       sector=se;
     }
-    public void editar(){ //metodo de editar
+    /*public void editar(){ //metodo de editar
       Scanner sc=new Scanner(System.in);
       System.out.println("1. Nombre responsable: " + getNombre_responsable());
       System.out.println("2. Nombre: "+ nombre);
@@ -126,7 +126,7 @@ public class Auspiciante extends Participante {
         default:
           break;
       }
-    }
+    }*/
 
 
     public SectorCubierto getSector() {
