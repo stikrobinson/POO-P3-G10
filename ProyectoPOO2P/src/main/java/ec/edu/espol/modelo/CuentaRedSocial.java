@@ -4,11 +4,13 @@
  */
 package ec.edu.espol.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author GENERATION 10
  */
-public class CuentaRedSocial {
+public class CuentaRedSocial implements Serializable {
     
     private String cuenta;
     private RedSocial redSocial;

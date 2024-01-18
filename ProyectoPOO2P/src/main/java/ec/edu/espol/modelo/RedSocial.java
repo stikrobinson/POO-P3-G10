@@ -4,10 +4,12 @@
  */
 package ec.edu.espol.modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author GENERATION 10
  */
-public enum RedSocial {
+public enum RedSocial implements Serializable{
     TWITTER,FACEBOOK,INSTAGRAM,YOUTUBE,TIKTOK,LINKEDIN,PINTEREST
 }

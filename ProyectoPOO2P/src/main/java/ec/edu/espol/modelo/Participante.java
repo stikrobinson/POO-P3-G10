@@ -4,13 +4,14 @@
  */
 package ec.edu.espol.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author GENERATION 10
  */
-public class Participante {
+public class Participante implements Serializable{
     
     private int codigo;
     private String cedula;

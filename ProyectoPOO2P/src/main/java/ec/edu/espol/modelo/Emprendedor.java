@@ -4,13 +4,20 @@
  */
 package ec.edu.espol.modelo;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author GENERATION 10
  */
-public class Emprendedor extends Participante {
+public class Emprendedor extends Participante implements Serializable {
     private String nombreEmprendimiento;
     private String descripcion;
 private static ArrayList<Emprendedor> emprendedores = new ArrayList<>();
@@ -21,6 +28,40 @@ private static ArrayList<Emprendedor> emprendedores = new ArrayList<>();
       super(c,t,e,d,s,responsable);
       nombreEmprendimiento = n;
       this.descripcion = descripcion;
+    }
+    public static void anadirEmprendedores(Emprendedor e){
+        emprendedores.add(e);
+         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./src/main/resources/ec/edu/espol/archivos/emprendedores.ser"))) {
+                  out.writeObject(emprendedores);
+                  out.flush();
+          }
+          catch (Exception ex) {
+              System.out.println(ex.getMessage());
+          } 
+    }
+        public static void actualizarEmprendedores(int i,Emprendedor e){
+        emprendedores.set(i,e);
+         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./src/main/resources/ec/edu/espol/archivos/emprendedores.ser"))) {
+                  out.writeObject(emprendedores);
+                  out.flush();
+          }
+          catch (Exception ex) {
+              System.out.println(ex.getMessage());
+          } 
+    }
+        public static void leerEmprendedores(){
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("./src/main/resources/ec/edu/espol/archivos/emprendedores.ser"))){
+
+            emprendedores = (ArrayList<Emprendedor>) in.readObject();
+
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } 
+
     }
   
     public SectorCubierto getSeccion() {

@@ -4,6 +4,13 @@
  */
 package ec.edu.espol.modelo;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -14,8 +21,8 @@ import java.util.Scanner;
  *
  * @author GENERATION 10
  */
-public class Feria {
-    private static int numCodigo=0;
+public class Feria implements Serializable {
+    private static int numCodigo;
     private int codigo;
     private String descripcion;
     private String nombre;
@@ -23,9 +30,11 @@ public class Feria {
     private LocalDate fechaFin;
     private LocalTime horario;
     private String lugar;
+    private static ArrayList<Feria> ferias = new ArrayList<>();
     private ArrayList<AuspicianteEnFeria> listaAuspiciantes;
     private ArrayList<Emprendedor> listaEmprendedores;
     private ArrayList<Stand> stands = new ArrayList<>();
+    private ArrayList<Integer> codigosFerias;
     private int[] standsPorSector = new int[4];
 
     
@@ -42,10 +51,11 @@ public class Feria {
         listaAuspiciantes=new ArrayList<>();
         listaEmprendedores=new ArrayList<>();
         
+        codigosFerias=new ArrayList<>();
         
-        
+        /*
         Scanner sc = new Scanner(System.in);
-        /*System.out.println("Ingrese la cantidad de stands para la sección de Alimentación: ");
+        System.out.println("Ingrese la cantidad de stands para la sección de Alimentación: ");
         int seccionA = sc.nextInt();
         standsPorSector[0] = seccionA;
         System.out.println("Ingrese la cantidad de stands para la sección de Educación: ");
@@ -64,6 +74,9 @@ public class Feria {
         numCodigo++; //El codigo debe incrementar en uno cada vez que se itera
     }
 
+     private static int generarCodigoAleatorio() {
+        return 10000 + new Random().nextInt(90000);
+    }
     
     
     public String getDescripcion() {
@@ -115,7 +128,53 @@ public class Feria {
         
         
     }
+
     
+    public ArrayList<Integer> getCodigosFerias() {
+        return codigosFerias;
+    }
+    public static void anadirFerias(Feria f){
+        ferias.add(f);
+         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./src/main/resources/ec/edu/espol/archivos/ferias.ser"))) {
+                  out.writeObject(ferias);
+                  out.flush();
+          }
+          catch (Exception ex) {
+              System.out.println(ex.getMessage());
+          } 
+    }
+        public static void actualizarFerias(int i,Feria f){
+        ferias.set(i,f);
+         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./src/main/resources/ec/edu/espol/archivos/ferias.ser"))) {
+                  out.writeObject(ferias);
+                  out.flush();
+          }
+          catch (Exception ex) {
+              System.out.println(ex.getMessage());
+          } 
+    }
+        public static void leerFerias(){
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("./src/main/resources/ec/edu/espol/archivos/ferias.ser"))){
+
+            ferias = (ArrayList<Feria>) in.readObject();
+            int size = ferias.size();
+            try{
+            Feria f = ferias.get(size-1);
+            int codigo = f.getCodigo();
+            numCodigo = codigo + numCodigo + 1;
+            }catch(Exception e){
+              numCodigo = 0;
+            }
+
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } 
+
+    }
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -157,8 +216,16 @@ public class Feria {
         this.stands = stands;
     }
 
+    public void setCodigosFerias(ArrayList<Integer> codigosFerias) {
+        this.codigosFerias = codigosFerias;
+    }
+
     public void setStandsPorSector(int[] standsPorSector) {
         this.standsPorSector = standsPorSector;
+    }
+    
+    public static ArrayList<Feria> getFerias(){
+        return ferias;
     }
     
     

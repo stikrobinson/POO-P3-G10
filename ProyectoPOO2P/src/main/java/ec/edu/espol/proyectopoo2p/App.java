@@ -5,8 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ec.edu.espol.modelo.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * JavaFX App
@@ -18,7 +21,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
+        Feria.leerFerias();
+        Auspiciante.leerAuspiciantes();
+        Emprendedor.leerEmprendedores();
         stage.show();
     }
 

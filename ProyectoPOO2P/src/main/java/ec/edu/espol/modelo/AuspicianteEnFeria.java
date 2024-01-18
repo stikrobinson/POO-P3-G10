@@ -4,13 +4,14 @@
  */
 package ec.edu.espol.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author GENERATION 10
  */
-public class AuspicianteEnFeria {
+public class AuspicianteEnFeria implements Serializable {
     private Auspiciante auspiciante;
     private boolean stand;    
     private String descripcion;

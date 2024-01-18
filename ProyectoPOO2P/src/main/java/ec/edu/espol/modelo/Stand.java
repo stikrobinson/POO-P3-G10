@@ -4,13 +4,14 @@
  */
 package ec.edu.espol.modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author GENERATION 10
  */
-public class Stand {
+public class Stand implements Serializable{
     private int codigoStand;
     private SectorCubierto seccion;
     private LocalDate fechaAsignacion;

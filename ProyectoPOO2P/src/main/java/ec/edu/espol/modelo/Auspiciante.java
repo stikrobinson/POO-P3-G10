@@ -3,6 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ec.edu.espol.modelo;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -10,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author GENERATION 10
  */
-public class Auspiciante extends Participante {
+public class Auspiciante extends Participante implements Serializable {
     private SectorCubierto sector;
 
     
@@ -148,7 +155,43 @@ public class Auspiciante extends Participante {
         return nombre;
     }
     
-    
+        public static void anadirAuspiciantes(Auspiciante a){
+        auspiciantes.add(a);
+         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./src/main/resources/ec/edu/espol/archivos/auspiciantes.ser"))) {
+                  out.writeObject(auspiciantes);
+                  out.flush();
+          }
+          catch (Exception ex) {
+              System.out.println(ex.getMessage());
+          } 
+    }
+        public static void actualizarAuspiciantes(int i,Auspiciante a){
+        auspiciantes.set(i,a);
+         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./src/main/resources/ec/edu/espol/archivos/auspiciantes.ser"))) {
+                  out.writeObject(auspiciantes);
+                  out.flush();
+          }
+          catch (Exception ex) {
+              System.out.println(ex.getMessage());
+          } 
+    }
+        public static void leerAuspiciantes(){
+        try(ObjectInputStream in = new ObjectInputStream(new FileInputStream("./src/main/resources/ec/edu/espol/archivos/auspiciantes.ser"))){
+
+            auspiciantes = (ArrayList<Auspiciante>) in.readObject();
+
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } 
+
+    }
+    public static ArrayList<Auspiciante> getAuspiciantes(){
+        return auspiciantes;
+    }
 
     
 }
