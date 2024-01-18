@@ -38,6 +38,9 @@ public class AuspicianteEnFeria implements Serializable {
         this.auspiciante = auspiciante;
     }
     
+    public boolean getStand(){
+        return stand;
+    }
     
     
     

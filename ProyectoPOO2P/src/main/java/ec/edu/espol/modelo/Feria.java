@@ -40,7 +40,7 @@ public class Feria implements Serializable {
     
     
 
-    public Feria(String descripcion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, LocalTime horario, String lugar) {
+    public Feria(String descripcion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, LocalTime horario, String lugar, int[]stands) {
         this.descripcion = descripcion;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
@@ -50,9 +50,7 @@ public class Feria implements Serializable {
         //Inicializo ArrayList
         listaAuspiciantes=new ArrayList<>();
         listaEmprendedores=new ArrayList<>();
-        
-        codigosFerias=new ArrayList<>();
-        
+        standsPorSector = stands;
         /*
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la cantidad de stands para la sección de Alimentación: ");
@@ -120,7 +118,16 @@ public class Feria implements Serializable {
     public ArrayList<Stand> getStands() {
         return stands;
     }
-
+   public void generarStands(){ 
+    char[] letras = {'A','B','C','D'};
+   int contador =0;
+    for(int i: standsPorSector){ 
+        for(int n=0; n<i; n++){
+        stands.add(new Stand(fechaInicio,letras[contador]));
+    }           
+    contador++;
+    }
+    }
     
 
     public int[] getStandsPorSector() {
@@ -238,8 +245,9 @@ public class Feria implements Serializable {
                + "\nFecha Fin: " + fechaFin + "\nHorario: " + horario + "\nLista de Auspiciantes: " + listaAuspiciantes + "\nCantidad Stands por sección: \n";
                
    }
+   
     public String mostrarInfo(){
-        return "Codigo:" + codigo+ "\nNombre: " + nombre +"\nFecha Inicio: " + fechaInicio+  "\nLugar: " + lugar+ "\nCantidad de Auspiciantes: "+ listaAuspiciantes.size();   
+        return "Codigo: " + codigo+ "\nNombre: " + nombre +"\nFecha Inicio: " + fechaInicio+  "\nLugar: " + lugar+ "\nCantidad de Auspiciantes: "+ listaAuspiciantes.size();   
     }
     
     

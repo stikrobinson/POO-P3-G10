@@ -192,6 +192,9 @@ public class Auspiciante extends Participante implements Serializable {
     public static ArrayList<Auspiciante> getAuspiciantes(){
         return auspiciantes;
     }
-
+    
+    public String toString(){
+        return "Nombre del Auspiciante: " + super.getNombre_responsable();
+    }
     
 }

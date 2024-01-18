@@ -119,12 +119,18 @@ private static ArrayList<Emprendedor> emprendedores = new ArrayList<>();
       return "Cédula: " + super.getCedula() + "\nNombre: " + nombreEmprendimiento + "\nTeléfono: " + super.getTelefono() + "\nEmail: " + super.getEmail();
     }
   
-    @Override
-    public String toString(){
+
+    public String mostrarInfoCompleta(){
 
         return "Nombre del emprendimiento: " + nombreEmprendimiento + "\nDescripción: " + descripcion + "\nSección" + seccion
                 + "\nStand asignado: "+ standsAsignados;
 
+    }
+    
+    @Override
+    public String toString(){
+
+        return "Nombre del emprendimiento: " + nombreEmprendimiento;
     }
 }
 

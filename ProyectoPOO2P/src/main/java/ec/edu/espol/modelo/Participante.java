@@ -93,6 +93,10 @@ public void setListaRedesSociales(ArrayList<CuentaRedSocial> listaRedesSociales)
       
   @Override
   public String toString(){
+    return nombre_responsable;
+  }
+  
+  public String mostrarInfo(){
     String redes = "";
     int contador = 1;
     for(CuentaRedSocial cuenta: listaRedesSociales){

@@ -13,19 +13,18 @@ import java.time.LocalDate;
  */
 public class Stand implements Serializable{
     private int codigoStand;
+    private static int codigo = 0;
     private SectorCubierto seccion;
     private LocalDate fechaAsignacion;
     private Participante ocupadoPor;
     private char letra;
    
 
-    public Stand(int codigoStand, SectorCubierto seccion, LocalDate fechaAsignacion, Participante ocupadoPor, char letra) {
-        this.codigoStand = codigoStand;
-        this.seccion = seccion;
+    public Stand(LocalDate fechaAsignacion, char letra) {
+        codigoStand = codigo;
         this.fechaAsignacion = fechaAsignacion;
-        this.ocupadoPor = ocupadoPor;
         this.letra = letra;
-        
+        codigo++;
     }
     
     
@@ -89,6 +88,47 @@ public class Stand implements Serializable{
         return "" + letra;
     }
     
+    public String mostrarInfo(){
+        int sec = 0;
+        switch (letra) {
+            case 'A':
+                sec = 1;
+                break;
+            case 'B':
+                sec =2;
+                break;
+            case 'C':
+                sec =3;
+                break;
+            case 'D':
+                sec =4;
+                break;
+            default:
+                break;
+        }
+        return "Codigo: " + codigoStand + "\n" + "Sección: " + sec + "\n" + "Fecha de asignación: " + fechaAsignacion;
+    }
     
+    
+    public String mostrarInfoCompleta(){
+        int sec = 0;
+        switch (letra) {
+            case 'A':
+                sec = 1;
+                break;
+            case 'B':
+                sec =2;
+                break;
+            case 'C':
+                sec =3;
+                break;
+            case 'D':
+                sec =4;
+                break;
+            default:
+                break;
+        }
+        return "Codigo: " + codigoStand + "\n" + "Sección: " + sec + "\n" + "Fecha de asignación: " + fechaAsignacion + "\n" + "Ocupado por: " + ocupadoPor.getNombre_responsable()+ "\n" + "Teléfono: " + ocupadoPor.getTelefono() + "\n" + "Email : " + ocupadoPor.getEmail();
+    }
     
 }

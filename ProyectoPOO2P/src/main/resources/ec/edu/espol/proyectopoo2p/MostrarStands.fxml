@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectopoo2p.MostrarStands">
+   <left>
+      <VBox fx:id="stands" alignment="CENTER" prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <VBox fx:id="info" alignment="CENTER" prefHeight="400.0" prefWidth="265.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
