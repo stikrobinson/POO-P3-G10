@@ -40,4 +40,9 @@ public class AdministrarStands {
         ferias.getChildren().add(hb);
     }
     }
+    
+    @FXML
+    private void volver() throws IOException{
+      App.setRoot("MenuPrincipal");  
+    }
 }

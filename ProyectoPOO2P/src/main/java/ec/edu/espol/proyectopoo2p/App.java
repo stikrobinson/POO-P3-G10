@@ -81,6 +81,7 @@ public class App extends Application {
         Emprendedor.getEmprendedores().add(emprendedor2);
         Emprendedor.getEmprendedores().add(emprendedor3);
         Emprendedor.getEmprendedores().add(emprendedor4);
+        
         Feria.getFerias().add(feriaPrueba);
         Feria.getFerias().add(feriaPrueba1);
         

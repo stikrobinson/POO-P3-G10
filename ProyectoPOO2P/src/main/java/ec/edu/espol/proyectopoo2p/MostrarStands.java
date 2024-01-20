@@ -29,6 +29,8 @@ public class MostrarStands {
     private VBox stands;
     @FXML
     private VBox info;
+    @FXML
+    private Label nombreFeria;
     
     
     
@@ -41,8 +43,13 @@ public class MostrarStands {
      }
     
      private void actualizar() throws IOException{
-                  int contador =0;
+         int contador = 0;
          int contadorSeccion = 1;
+              nombreFeria.setText(feria.getNombre());
+                                                  Label mostrarInfo = new Label("Seleccione un stand para visualizar su información.");
+                                    mostrarInfo.setAlignment(Pos.CENTER);
+                                    mostrarInfo.setStyle("-fx-border-color: black; -fx-border-width: 2; -fx-padding: 50;");
+                                    info.getChildren().add(mostrarInfo);
              for(int i: feria.getStandsPorSector()){  
                  HBox hb = new HBox();
                  hb.setAlignment(Pos.CENTER);
@@ -82,6 +89,9 @@ public class MostrarStands {
                  if(cantStands >= 2){
                      showMessage(AlertType.ERROR,"Falla al reservar stand", "", "No se puede reservar stand, porque un emprendedor puede reservar hasta dos stands.");
                  }
+                 else if(p==null){
+                     showMessage(AlertType.ERROR,"Falla al reservar stand", "", "No se puede reservar stand, porque no ha seleccionado a un emprendedor o auspiciante.");
+                 }
                  else{
                      s.setOcupadoPor(p);
                      showMessage(AlertType.INFORMATION,"Se reservó stand", "", "El stand ha sido reservado para el emprendedor o el auspiciante.");
@@ -91,6 +101,11 @@ public class MostrarStands {
                                 try{
                                     stands.getChildren().clear();
                                     actualizar();
+                                    info.getChildren().clear();
+                                                  Label mostrarInfo = new Label("Seleccione un stand para visualizar su información.");
+                                    mostrarInfo.setAlignment(Pos.CENTER);
+                                    mostrarInfo.setStyle("-fx-border-color: black; -fx-border-width: 2; -fx-padding: 50;");
+                                    info.getChildren().add(mostrarInfo);
                                 }catch(IOException ex){
                                     System.out.println(ex.getMessage());
                                 }});
@@ -122,6 +137,11 @@ public class MostrarStands {
                  stands.getChildren().add(hb);
                  contadorSeccion++;
          }    
+     }
+     
+     @FXML
+     private void volver() throws IOException{
+         App.setRoot("AdministrarStands");
      }
      
          public void showMessage(Alert.AlertType tipo, String titulo, String encabezado, String mensaje) {

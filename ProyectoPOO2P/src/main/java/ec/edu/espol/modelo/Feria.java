@@ -38,7 +38,11 @@ public class Feria implements Serializable {
     private int[] standsPorSector = new int[4];
 
     
-    
+    public Feria(){
+        nombre = "Feria de prueba";
+        listaAuspiciantes=new ArrayList<>();
+        listaEmprendedores=new ArrayList<>();
+    }
 
     public Feria(String descripcion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, LocalTime horario, String lugar, int[]stands) {
         this.descripcion = descripcion;
