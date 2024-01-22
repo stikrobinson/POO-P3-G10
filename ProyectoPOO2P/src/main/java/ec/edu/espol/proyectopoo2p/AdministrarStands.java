@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import ec.edu.espol.modelo.*;
 import java.io.FileInputStream;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,7 +22,8 @@ public class AdministrarStands {
     for(Feria f: Feria.getFerias()){
         HBox hb = new HBox();
         hb.setSpacing(20);
-        hb.setAlignment(Pos.CENTER);
+        hb.setAlignment(Pos.CENTER_LEFT);
+        VBox.setMargin(hb, new Insets(5,0,0,80));
         FileInputStream in = new FileInputStream("./src/main/resources/ec/edu/espol/imagenes/Imagenferia.png");
         Image imagen = new Image(in);
         ImageView image = new ImageView(imagen);
@@ -31,6 +33,7 @@ public class AdministrarStands {
         Button bt = new Button("Administrar stands");
         bt.setOnAction(e->{ MostrarStands.setFeria(f);
             try{
+            MostrarStands.setVolverAFerias(false);
             App.setRoot("MostrarStands");
             }catch(Exception ex){
              System.out.println(ex.getMessage());

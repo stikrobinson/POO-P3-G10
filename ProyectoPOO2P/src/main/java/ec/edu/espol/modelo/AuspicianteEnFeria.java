@@ -42,6 +42,35 @@ public class AuspicianteEnFeria implements Serializable {
         return stand;
     }
     
+    public String toString(){
+        return auspiciante.toString();
+    }
     
+    public String mostrarInfo(Feria f){
+        String tieneStand;
+        String standAsignado = "No aplica";
+        if(stand){
+            tieneStand = "Sí";
+            standAsignado = "";
+            for(Stand s: f.getStands()){
+            if(s.getOcupadoPor()!=null){
+                if(s.getOcupadoPor().equals(this)){
+                    if(standAsignado.equals("")){
+                        standAsignado = standAsignado + s.getCodigoStand();
+                    }else{
+                        standAsignado = standAsignado + " - "  + s.getCodigoStand();
+                     }
+            }
+            }
+            }
+            if(standAsignado.equals("")){
+                standAsignado = "No se le ha asignado stand";
+            }
+        }else{
+            tieneStand = "No";
+        }
+        return auspiciante.toString() + "\nDescripción del auspicio: " + descripcion + "\nTiene stand asignado: " + tieneStand + "\nStand asignado: " + standAsignado;
+        
+    }
     
 }

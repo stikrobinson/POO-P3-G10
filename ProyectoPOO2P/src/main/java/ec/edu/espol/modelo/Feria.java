@@ -30,6 +30,8 @@ public class Feria implements Serializable {
     private LocalDate fechaFin;
     private LocalTime horario;
     private String lugar;
+    private int cantidadEmprendedores;
+    private int cantidadAuspiciantes;
     private static ArrayList<Feria> ferias = new ArrayList<>();
     private ArrayList<AuspicianteEnFeria> listaAuspiciantes;
     private ArrayList<Emprendedor> listaEmprendedores;
@@ -139,7 +141,19 @@ public class Feria implements Serializable {
         
         
     }
-
+    
+   public int getCantidadAuspiciantes(){
+       return cantidadAuspiciantes;
+   }
+   public void setCantidadAuspiciantes(){
+       cantidadAuspiciantes = listaAuspiciantes.size();
+   }
+   public int getCantidadEmprendedores(){
+      return cantidadEmprendedores;
+   }
+   public void setCantidadEmprendedores(){
+     cantidadEmprendedores = listaEmprendedores.size();
+   }
     
     public ArrayList<Integer> getCodigosFerias() {
         return codigosFerias;
@@ -246,7 +260,7 @@ public class Feria implements Serializable {
     @Override
    public String toString(){
        return "Nombre: " + nombre + "\nDescripción: " + descripcion + "\nLugar: " + lugar + "\nFecha Inicio: " + fechaInicio
-               + "\nFecha Fin: " + fechaFin + "\nHorario: " + horario + "\nLista de Auspiciantes: " + listaAuspiciantes + "\nCantidad Stands por sección: \n";
+               + "\nFecha Fin: " + fechaFin + "\nHorario: " + horario + "\nLista de Auspiciantes: " + listaAuspiciantes + "\nLista de Emprendedores: " + listaEmprendedores + "\nCantidad Stands por sección: "+ "Sección";
                
    }
    

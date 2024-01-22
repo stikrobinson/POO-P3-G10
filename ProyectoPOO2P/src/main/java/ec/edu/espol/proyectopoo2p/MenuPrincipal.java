@@ -7,13 +7,13 @@ import javafx.fxml.FXML;
 public class MenuPrincipal {
 
     @FXML
-    private void administrarFerias(){
-       
+    private void administrarFerias() throws IOException{
+    App.setRoot("AdministrarFerias");      
     }
     
     @FXML
-    private void administrarEmprendedores(){
-       
+    private void administrarEmprendedores()throws IOException{
+    App.setRoot("AdministrarEmprendedores");
     }
     
     @FXML

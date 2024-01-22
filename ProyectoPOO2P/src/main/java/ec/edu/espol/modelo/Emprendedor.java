@@ -120,17 +120,53 @@ private static ArrayList<Emprendedor> emprendedores = new ArrayList<>();
     }
   
 
-    public String mostrarInfoCompleta(){
-
-        return "Nombre del emprendimiento: " + nombreEmprendimiento + "\nDescripción: " + descripcion + "\nSección" + seccion
-                + "\nStand asignado: "+ standsAsignados;
-
+    public String mostrarInfoCompleta(Feria f){
+        String stands = "";
+        String sec = "";
+        for(Stand s: f.getStands()){
+            String seccion = "";
+            if(s.getOcupadoPor()!=null){
+                if(s.getOcupadoPor().equals(this)){
+                    char letra = s.getLetra();
+                    switch (letra) {
+                    case 'A':
+                    seccion = "1";
+                    break;
+                    case 'B':
+                    seccion ="2";
+                    break;
+                    case 'C':
+                    seccion ="3";
+                    break;
+                    case 'D':
+                    seccion ="4";
+                    break;
+                    default:
+                    break;
+                    }
+                    if(sec.equals("")){
+                        sec = sec + seccion;
+                    }else{
+                        sec = sec + " - " + seccion;
+                     }
+                    if(stands.equals("")){
+                        stands = stands + s.getCodigoStand();
+                    }else{
+                        stands = stands + " - "  + s.getCodigoStand();
+                     }
+            }
+        }
+        }
+         return "Nombre del emprendimiento: " + nombreEmprendimiento + "\nDescripción: " + descripcion + "\nSección: " + sec
+                + "\nStand asignado: "+ stands;
     }
+    
+    
     
     @Override
     public String toString(){
 
-        return "Nombre del emprendimiento: " + nombreEmprendimiento;
+        return "Nombre del emprendedor: " + nombreEmprendimiento;
     }
 }
 

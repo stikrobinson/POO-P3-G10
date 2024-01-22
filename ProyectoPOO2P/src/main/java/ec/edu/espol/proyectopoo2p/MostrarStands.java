@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
  * @author steve
  */
 public class MostrarStands {
+    private static boolean volverAFerias;
     private static Feria feria;
     @FXML
     private VBox stands;
@@ -94,6 +95,12 @@ public class MostrarStands {
                  }
                  else{
                      s.setOcupadoPor(p);
+                     if(p instanceof Emprendedor){
+                         Emprendedor em = (Emprendedor) p;
+                        if(feria.getListaEmprendedores().contains(em)==false){
+                           feria.getListaEmprendedores().add((Emprendedor)p);
+                        }
+                     }
                      showMessage(AlertType.INFORMATION,"Se reservó stand", "", "El stand ha sido reservado para el emprendedor o el auspiciante.");
                      Thread actualizarPantalla = new Thread(new Runnable(){
                          public void run(){
@@ -112,6 +119,7 @@ public class MostrarStands {
                          }
                      });
                      actualizarPantalla.start();
+                     Feria.actualizarFerias(feria.getCodigo(),feria);
                  }
                  });
                  info.getChildren().addAll(infoStand,reservar,cb,reserva);
@@ -141,7 +149,11 @@ public class MostrarStands {
      
      @FXML
      private void volver() throws IOException{
+         if(volverAFerias){
+         App.setRoot("AdministrarFerias");    
+         }else{
          App.setRoot("AdministrarStands");
+         }
      }
      
          public void showMessage(Alert.AlertType tipo, String titulo, String encabezado, String mensaje) {
@@ -152,6 +164,8 @@ public class MostrarStands {
     alerta.showAndWait();                         
     }
     
-    
+    public static void setVolverAFerias(boolean b){
+        volverAFerias = b;
+    }
 }
 

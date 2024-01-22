@@ -4,4 +4,5 @@ module ec.edu.espol.proyectopoo2p {
 
     opens ec.edu.espol.proyectopoo2p to javafx.fxml;
     exports ec.edu.espol.proyectopoo2p;
+    exports ec.edu.espol.modelo;
 }

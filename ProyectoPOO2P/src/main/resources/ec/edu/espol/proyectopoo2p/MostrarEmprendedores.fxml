@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectopoo2p.AdministrarStands">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.proyectopoo2p.MostrarEmprendedores">
    <bottom>
       <Button mnemonicParsing="false" onAction="#volver" text="Volver" BorderPane.alignment="BOTTOM_LEFT">
          <BorderPane.margin>
@@ -18,7 +18,7 @@
    <left>
       <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="370.0" prefWidth="601.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="ferias" alignment="TOP_CENTER" minWidth="579.0" />
+            <VBox fx:id="info" alignment="TOP_CENTER" minWidth="579.0" />
          </content>
          <BorderPane.margin>
             <Insets bottom="5.0" left="10.0" right="10.0" />
@@ -26,6 +26,6 @@
       </ScrollPane>
    </left>
    <top>
-      <Label alignment="CENTER" prefHeight="40.0" prefWidth="601.0" text="Selecciona la feria que quiera administrar los stands" BorderPane.alignment="CENTER" />
+      <Label fx:id="titulo" alignment="CENTER" prefHeight="40.0" prefWidth="601.0" text="Selecciona la feria que quiera administrar los stands" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>
